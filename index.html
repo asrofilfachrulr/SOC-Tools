@@ -3,14 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SOC Tool</title>
+    <title>SOC Tools</title>
     <link rel="stylesheet" href="styles.css" />
     <!-- Bootstrap CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body>
     <header>
-      <h3 class="font-semibold inline-block w-fit">SOC Tools: IBM Qradar</h3>
+      <h3 class="font-semibold inline-block w-fit">Security Operation Center Tools</h3>
     </header>
     <main>
       <div class="menu">
@@ -24,16 +24,16 @@
           id="ta-rawtext-ip-ext"`
           rows="4"
           class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
-          placeholder="Enter your raw text to be parsed..."
+          placeholder="Enter your raw text to be extractd..."
         ></textarea>
         <div class="buttons my-4 flex justify-end">
           <button
-            id="bt-parse-ip-ext"
+            id="bt-extract-ip-ext"
             type="button"
-            onclick="parse()"
+            onclick="extract()"
             class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2"
           >
-            Parse
+            Extract
           </button>
           <button
             id="bt-clear-ip-ext"
@@ -48,7 +48,7 @@
         <label
           for="ib-output-ip-ext"
           class="block mb-2 text-sm font-medium text-gray-900"
-          >Parsed IP(s)</label
+          >Extracted IP(s)</label
         >
         <div class="flex flex-col gap-4 w-full items-end">
           <input
@@ -66,6 +66,60 @@
             <span id="default-message">Copy</span>
           </button>
         </div>
+      </div>
+      <div class="menu">
+        <h3 class="title">URL Defanger</h3>
+        <label
+        for="ib-rawtext-url-defang"
+        class="block mb-2 text-sm font-medium text-gray-900"
+        >Raw Text</label
+      >
+      <input
+        id="ib-rawtext-url-defang"`
+        rows="4"
+        class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+        placeholder="Enter your raw text to be defanged..."
+      />
+      <div class="buttons my-4 flex justify-end">
+        <button
+          id="bt-defang-url-defang"
+          type="button"
+          onclick="defang()"
+          class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2"
+        >
+          Defang
+        </button>
+        <button
+          id="bt-clear-url-defang"
+          onclick="clearDefang()"
+          type="button"
+          class="py-2.5 px-5 me-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100"
+        >
+          Clear
+        </button>
+      </div>
+
+      <label
+        for="ib-output-url-defang"
+        class="block mb-2 text-sm font-medium text-gray-900"
+        >Defanged URL</label
+      >
+      <div class="flex flex-col gap-4 w-full items-end">
+        <input
+          id="ib-output-url-defang"
+          type="text"
+          class="col-span-6 bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+          disabled
+          readonly
+        />
+        <button
+          id="bt-copy-url-defang"
+          onclick="copyDefang()"
+          class="col-span-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm sm:w-auto text-center items-center inline-flex p-3 px-5"
+        >
+          <span id="default-message">Copy</span>
+        </button>
+      </div>
       </div>
     </main>
     <script src="script.js"></script>
