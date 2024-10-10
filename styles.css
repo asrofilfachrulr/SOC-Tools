@@ -1,0 +1,42 @@
+html {
+    background-color: #fcfcfc;
+}
+
+body {
+    max-width: 1000px;
+    min-width: 400px;
+    padding: 2rem;
+    margin-inline: auto !important;
+}
+
+body > header {
+    background-color: #1d3649;
+    padding: 1rem;
+    min-height: 70px;
+    border-radius: 5px;
+}
+
+body > header * {
+    color: white;
+}
+
+.menu {
+    margin-block: 1rem;
+    padding: 1rem;
+    border: #dedede 1px solid;
+    border-radius: 5px;
+    min-height: 100px;
+}
+
+.menu > .title {
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+button {
+    transition: all 200ms ease-in-out;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
