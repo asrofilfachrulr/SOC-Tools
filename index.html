@@ -10,9 +10,59 @@
   </head>
   <body>
     <header>
-      <h3 class="font-semibold inline-block w-fit">Security Operation Center Tools</h3>
+      <h3 class="font-semibold inline-block w-fit">
+        Security Operation Center Tools
+      </h3>
     </header>
-    <main>
+    <main class="relative">
+      <div
+        id="toast-success"
+        class="toast hidden toast-hidden absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow"
+        role="alert"
+      >
+        <div
+          class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg"
+        >
+          <svg
+            class="w-5 h-5"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+          >
+            <path
+              d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+            />
+          </svg>
+          <span class="sr-only">Check icon</span>
+        </div>
+        <div id="toast-success-msg" class="ms-3 text-sm font-normal"></div>
+        <button
+          id="btn-close-toast-success"
+          onclick="hideToastSuccess()"
+          type="button"
+          class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8"
+          data-dismiss-target="#toast-success"
+          aria-label="Close"
+        >
+          <span class="sr-only">Close</span>
+          <svg
+            class="w-3 h-3"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 14 14"
+          >
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+            />
+          </svg>
+        </button>
+      </div>
       <div class="menu">
         <h4 class="title">IP(s) Extractor</h4>
         <label
@@ -21,7 +71,8 @@
           >Raw Text</label
         >
         <textarea
-          id="ta-rawtext-ip-ext"`
+          id="ta-rawtext-ip-ext"
+          `
           rows="4"
           class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
           placeholder="Enter your raw text to be extractd..."
@@ -34,6 +85,14 @@
             class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2"
           >
             Extract
+          </button>
+          <button
+            id="bt-extract-n-copy-ip-ext"
+            type="button"
+            onclick="extractNCopy()"
+            class="text-white focus:outline-none bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2"
+          >
+            Extract & Copy
           </button>
           <button
             id="bt-clear-ip-ext"
@@ -70,56 +129,65 @@
       <div class="menu">
         <h3 class="title">URL Defanger</h3>
         <label
-        for="ib-rawtext-url-defang"
-        class="block mb-2 text-sm font-medium text-gray-900"
-        >Raw Text</label
-      >
-      <input
-        id="ib-rawtext-url-defang"`
-        rows="4"
-        class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
-        placeholder="Enter your raw text to be defanged..."
-      />
-      <div class="buttons my-4 flex justify-end">
-        <button
-          id="bt-defang-url-defang"
-          type="button"
-          onclick="defang()"
-          class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2"
+          for="ib-rawtext-url-defang"
+          class="block mb-2 text-sm font-medium text-gray-900"
+          >Raw Text</label
         >
-          Defang
-        </button>
-        <button
-          id="bt-clear-url-defang"
-          onclick="clearDefang()"
-          type="button"
-          class="py-2.5 px-5 me-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100"
-        >
-          Clear
-        </button>
-      </div>
-
-      <label
-        for="ib-output-url-defang"
-        class="block mb-2 text-sm font-medium text-gray-900"
-        >Defanged URL</label
-      >
-      <div class="flex flex-col gap-4 w-full items-end">
         <input
-          id="ib-output-url-defang"
-          type="text"
-          class="col-span-6 bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-          disabled
-          readonly
+          id="ib-rawtext-url-defang"
+          `
+          rows="4"
+          class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+          placeholder="Enter your raw text to be defanged..."
         />
-        <button
-          id="bt-copy-url-defang"
-          onclick="copyDefang()"
-          class="col-span-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm sm:w-auto text-center items-center inline-flex p-3 px-5"
+        <div class="buttons my-4 flex justify-end">
+          <button
+            id="bt-defang-url-defang"
+            type="button"
+            onclick="defang()"
+            class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2"
+          >
+            Defang
+          </button>
+          <button
+            id="bt-defang-n-copy-url-defang"
+            type="button"
+            onclick="defangNCopy()"
+            class="text-white focus:outline-none bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2"
+          >
+            Defang & Copy
+          </button>
+          <button
+            id="bt-clear-url-defang"
+            onclick="clearDefang()"
+            type="button"
+            class="py-2.5 px-5 me-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100"
+          >
+            Clear
+          </button>
+        </div>
+
+        <label
+          for="ib-output-url-defang"
+          class="block mb-2 text-sm font-medium text-gray-900"
+          >Defanged URL</label
         >
-          <span id="default-message">Copy</span>
-        </button>
-      </div>
+        <div class="flex flex-col gap-4 w-full items-end">
+          <input
+            id="ib-output-url-defang"
+            type="text"
+            class="col-span-6 bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+            disabled
+            readonly
+          />
+          <button
+            id="bt-copy-url-defang"
+            onclick="copyDefang()"
+            class="col-span-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm sm:w-auto text-center items-center inline-flex p-3 px-5"
+          >
+            <span id="default-message">Copy</span>
+          </button>
+        </div>
       </div>
     </main>
     <script src="script.js"></script>

@@ -40,3 +40,12 @@ button {
 button:hover {
     transform: scale(1.05);
 }
+
+.toast {
+    transition: all 200ms ease-in-out;
+    top: 1.5rem;
+}
+
+.toast-hidden {
+    top: -2rem !important;
+}

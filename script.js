@@ -1,3 +1,28 @@
+// toast message functions
+function hideToastSuccess(){
+    document
+    .getElementById("toast-success")
+    .classList
+    .add("hidden", "toast-hidden")
+
+    document
+    .getElementById("toast-success-msg").innerText = ""
+}
+
+function showToast(msg){
+    document
+    .getElementById("toast-success")
+    .classList
+    .remove("hidden", "toast-hidden")
+
+    document
+    .getElementById("toast-success-msg").innerText = msg
+
+    setTimeout(() => {
+        hideToastSuccess()
+    }, 3000)
+}
+
 // IP Extractor Functions
 function clearIPExt(){
     document.getElementById("ta-rawtext-ip-ext").value = ""
@@ -18,6 +43,13 @@ function extract(){
 function copyIPExt(){
     const text = document.getElementById("ib-output-ip-ext").value
     navigator.clipboard.writeText(text)
+
+    showToast("Berhasil disalin")
+}
+
+function extractNCopy() {
+    extract()
+    copyIPExt()
 }
 
 // Defang URL Functions
@@ -41,4 +73,11 @@ function defang(){
 function copyDefang(){
     const text = document.getElementById("ib-output-url-defang").value
     navigator.clipboard.writeText(text)
+
+    showToast("Berhasil disalin")
+}
+
+function defangNCopy() {
+    defang()
+    copyDefang()
 }
