@@ -1,3 +1,5 @@
+const ipv4Regex = /(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)/g;
+
 // toast message functions
 function hideToastSuccess(){
     document
@@ -30,8 +32,6 @@ function clearIPExt(){
 }
 
 function extract(){
-    const ipv4Regex = /(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)/g;
-
     text = document.getElementById("ta-rawtext-ip-ext").value
 
     const ipAddresses = new Set(text.match(ipv4Regex)) || [];
@@ -80,4 +80,22 @@ function copyDefang(){
 function defangNCopy() {
     defang()
     copyDefang()
+}
+
+// IP Reputation Check Functions
+function validateIPv4(text){
+    return text.match(ipv4Regex) != null ? true : false
+}
+
+
+function virusTotalCheck() {
+    const text = document.getElementById("ib-rawtext-ip-check").value
+    if(validateIPv4(text))
+        window.open(`https://www.virustotal.com/gui/ip-address/${text}`, '_blank')
+}
+
+function abuseIPDBCheck() {
+    const text = document.getElementById("ib-rawtext-ip-check").value
+    if(validateIPv4(text))
+        window.open(`https://www.abuseipdb.com/check/${text}`, '_blank')
 }

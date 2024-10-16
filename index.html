@@ -189,6 +189,44 @@
           </button>
         </div>
       </div>
+      <div class="menu">
+        <h3 class="title">IP Reputation Check</h3>
+        <label
+          for="ib-rawtext-ip-check"
+          class="block mb-2 text-sm font-medium text-gray-900"
+          >IP Address</label
+        >
+        <input
+          id="ib-rawtext-ip-check"
+          `
+          rows="4"
+          class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+          placeholder="127.0.0.1"
+        />
+        <div class="buttons my-4 flex justify-end">
+          <button
+            id="bt-vt-ip-check"
+            type="button"
+            onclick="virusTotalCheck()"
+            class="text-[#86aaf9] bg-[#000000] hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 w-fit flex items-center justify-center gap-2"
+          >
+          <svg width="1em" height="1em" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 100 89">
+            <path fill-rule="evenodd" d="M45.292 44.5 0 89h100V0H0l45.292 44.5zM90 80H22l35.987-35.2L22 9h68v71z"></path>
+          </svg>
+            <span class="font-semibold">Virus Total</span>
+          </button>
+          <button
+            id="bt-ipdb-ip-check"
+            type="button"
+            onclick="abuseIPDBCheck()"
+            class="text-white focus:outline-none bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 w-fit flex items-center justify-center gap-2"
+          >
+          <img src="https://www.abuseipdb.com/favicon.ico" alt="AbuseIPDB - IP Address Blacklist" class="w-auto h-[24px]">
+            <span>AbuseIPDB</span>
+          </button>
+        </div>
+
+      </div>
     </main>
     <script src="script.js"></script>
   </body>
